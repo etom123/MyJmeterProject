@@ -21,4 +21,4 @@ if [ ! -f "/var/lib/influxdb/.init" ]; then
     kill -s TERM %1
 fi
 
-exec influxd  $@
+exec influxd -config /usr/local/etc/influxdb.conf $@
