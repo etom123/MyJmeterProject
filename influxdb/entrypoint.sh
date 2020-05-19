@@ -2,7 +2,7 @@
 
 
 if [ ! -f "/var/lib/influxdb/.init" ]; then
-    exec influxd -config /usr/local/etc/influxdb.conf $@ &
+    exec influxd  $@ &
 	
 
 
@@ -27,5 +27,4 @@ if [ ! -f "/var/lib/influxdb/.init" ]; then
 fi
 
 exec influxd -config /usr/local/etc/influxdb.conf $@
-	influx -host 'localhost' -port '8086' -execute 'CREATE USER ${INFLUX_USER} WITH PASSWORD '${INFLUX_PASSWORD}' WITH ALL PRIVILEGES'
-	influx -host 'localhost' -port '8086' -execute 'CREATE DATABASE ${INFLUX_DB}' 
+	
