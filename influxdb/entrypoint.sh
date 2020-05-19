@@ -11,7 +11,7 @@ if [ ! -f "/var/lib/influxdb/.init" ]; then
         sleep 1
     done
 
-    echo "starting test"
+   
 	influx -host=localhost -port=8086 -execute="CREATE USER ${INFLUX_USER} WITH PASSWORD '${INFLUX_PASSWORD}' WITH ALL PRIVILEGES"
 	influx -host=localhost -port=8086 -execute="CREATE DATABASE ${INFLUX_DB}" 
     
@@ -24,10 +24,13 @@ if [ ! -f "/var/lib/influxdb/.init" ]; then
 	touch "/var/lib/influxdb/.init"
 
     kill -s TERM %1
+	
+	
+	
 fi
-influx -host=localhost -port=8086 -execute="CREATE USER ${INFLUX_USER} WITH PASSWORD '${INFLUX_PASSWORD}' WITH ALL PRIVILEGES"
-influx -host=localhost -port=8086 -execute="CREATE DATABASE ${INFLUX_DB}" 
-exec influxd -config /usr/local/etc/influxdb.conf $@ &
+
+exec influxd -config /usr/local/etc/influxdb.conf $@ 
+
 	
 
 
