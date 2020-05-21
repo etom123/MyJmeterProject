@@ -7,6 +7,7 @@ services:
     ports:
       - '8086:8086'
       - '2003:2003'
+      - '8083:8083'
     volumes:
       - influxdb_data:/var/lib/influxdb
       - ./configfiles/:/usr/local/etc/
