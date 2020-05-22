@@ -20,7 +20,17 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
+      
+  chronograf:
+    image: chronograf:latest
+    links:
+      - influxdb
+    ports:
+      - '8888:8888'
+    volumes:
+      - chronograph_data:/var/lib/chronograf
 
 volumes:
   grafana_data: {}
   influxdb_data: {}
+  chronograph_data : {}
